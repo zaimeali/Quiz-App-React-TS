@@ -1,5 +1,8 @@
 import React from 'react'
 
+// Router
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+
 // Components
 import Loading from './components/Loading'
 
