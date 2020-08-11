@@ -1,0 +1,38 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-container input {
+    border-radius: 10px;
+    border: none;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    font-size: 16px;
+    line-height: 36px;
+
+    width: 100%;
+
+    padding-left: 15px;
+
+    display: flex;
+    align-items: center;
+}
+
+input:focus{
+    border: 1px solid rgb(138, 138, 138);
+    outline: none;
+}
+
+input:hover {
+    cursor: url('../assets/img/pen.png') 2 2, pointer;
+    box-shadow: 1px 1px 5px rgba(110, 110, 110, 0.342);
+}
+
+.userLogo {
+    width: 58px;
+    margin-bottom: 15px;
+}

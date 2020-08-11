@@ -16,7 +16,7 @@ export default function Loading() {
         },
         end: {
             transition: {
-                staggerChildren: 0.2,
+                staggerChildren: 0.3,
             },
         },
     }
