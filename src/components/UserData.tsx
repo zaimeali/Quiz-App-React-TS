@@ -9,9 +9,14 @@ import { ReactComponent as User } from '../assets/img/user.svg'
 // Route
 import { useHistory } from 'react-router-dom'
 
+// Interface
+export interface IUser {
+    name: string;
+}
+
 export default function UserData() {
 
-    const [user, setUser] = useState('')
+    const [user, setUser] = useState<IUser>({ name: '' })
     const history = useHistory()
 
     const handleChange = (e: any) => {
@@ -24,6 +29,7 @@ export default function UserData() {
         if(user) {
             history.push({
                 pathname: `/home`,
+                state: user
             })
         }
     }
@@ -36,7 +42,7 @@ export default function UserData() {
             <User className="userLogo" />
             <input 
                 type="text"
-                value={ user || "" }
+                value={ user.name || '' }
                 onChange={ handleChange }
                 placeholder="Enter your name.."
             />

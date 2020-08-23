@@ -10,13 +10,13 @@ import { useLocation } from 'react-router-dom';
 
 export default function Home() {
 
-    const location = useLocation()
+    const location = useLocation() 
 
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const timer = setTimeout(() => {
-        setLoading(false)
+            setLoading(false)
         }, 3000);
         return () => clearTimeout(timer);
     }, [])
@@ -27,6 +27,7 @@ export default function Home() {
         >
             { loading && <Loading /> }
             {/* { !loading && location.search } */}
+            <p>{ location.state }</p>
         </div>
     )
 }
