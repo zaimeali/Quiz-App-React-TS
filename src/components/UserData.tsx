@@ -19,13 +19,16 @@ export default function UserData() {
     const [user, setUser] = useState<IUser>({ name: '' })
     const history = useHistory()
 
+    // https://opentdb.com/api.php?amount=10&category=18&type=multiple
+
     const handleChange = (e: any) => {
-        setUser(e.target.value)
+        setUser({
+            name: e.target.value
+        })
     }
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
-        setUser(e.target.value)
         if(user) {
             history.push({
                 pathname: `/home`,

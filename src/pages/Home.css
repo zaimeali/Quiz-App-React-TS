@@ -6,3 +6,20 @@
 
     background-color: white;
 }
+
+.main__menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.app__name, .app_username {
+    transition: transform 450ms;
+    padding: 3px;
+}
+
+.app__name:hover, .app_username:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: black;
+}
