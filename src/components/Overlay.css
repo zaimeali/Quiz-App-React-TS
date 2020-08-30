@@ -1,0 +1,8 @@
+.empty__overlay {
+    height: 100vh;
+    width: 100%;
+    z-index: 2;
+    display: flex;
+
+    background-color: rgba(0, 0, 0, 0.5);
+}
