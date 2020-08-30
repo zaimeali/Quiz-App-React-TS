@@ -40,17 +40,19 @@ export default function Home() {
     }, [])
 
     return (
-        <div 
-            className="home-wrapper"
-        >
+        <div className="home-wrapper">
             { loading && <Loading /> }
-            {/* { !loading && location.search } */}
-            {/* { username.name } */}
             { !loading && 
             <AppBar position="absolute">
                 <Toolbar className="main__menu">
                     <Typography variant="h5" className="app__name">
                         Quiz Trivia App
+                    </Typography>
+                    <Typography className="numQuestion" align="center">
+                        0/10 Questions
+                    </Typography>
+                    <Typography className="numQuestion" align="center">
+                        0/10 Score
                     </Typography>
                     <Typography variant="caption" className="app_username">
                         Welcome, { username.name }!

@@ -18,9 +18,7 @@ export default function UserData() {
 
     const [user, setUser] = useState<IUser>({ name: '' })
     const history = useHistory()
-
-    // https://opentdb.com/api.php?amount=10&category=18&type=multiple
-
+    
     const handleChange = (e: any) => {
         setUser({
             name: e.target.value

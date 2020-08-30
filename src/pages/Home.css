@@ -29,3 +29,10 @@
     border-radius: 5px;
     background-color: black;
 }
+
+.numQuestion {
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    background-color: grey;
+}

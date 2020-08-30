@@ -1,51 +1,51 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import './Body.css'
 
-// Framer Motion
-import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
+// Material UI
+import { Accordion, AccordionSummary, Typography, AccordionDetails, Divider } from '@material-ui/core'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
+// Components
+import Even from './Even'
+import Odd from './Odd'
 
-const items = [0, 1, 2];
+export default function Body() {    
 
-export default function Body() {
-  return (
-    <div className="body__wrapper">
-        <AnimateSharedLayout>
-            <motion.ul layout initial={{ borderRadius: 25 }}>
-                { items.map(item => (
-                    <Item key={item} />
-                )) }
-            </motion.ul>
-        </AnimateSharedLayout>
-    </div>
-  )
-}
+    const [items, setItems] = useState<any[]>([])
 
-function Item() {
-    const [isOpen, setIsOpen] = useState(false)
-    const toggleOpen = () => {
-        setIsOpen(!isOpen)
-    }
-    return(
-        <motion.li layout onClick={ toggleOpen } initial={{ borderRadius: 10 }}>
-            <motion.div className="avatar" layout />
-            <AnimatePresence>{ isOpen && <Content /> }</AnimatePresence>
-        </motion.li>
-    )
-}
+    useEffect(() => {
+        fetch('https://opentdb.com/api.php?amount=10&category=18&type=multiple')
+            .then(res => res.json())
+            .then(data => {
+                setItems(data.results)
+                console.log(data.results)
+            })
+    }, [])
 
-function Content() {
     return (
-        <motion.div
-            layout
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-        >
-            <div className="row" />
-            <div className="row" />
-            <div className="row" />
-        </motion.div>
+        <div className="body__wrapper">
+            { items && items.map((item, i) => (
+                <Accordion key={ i }>
+                    <AccordionSummary
+                        expandIcon={ <ExpandMoreIcon /> }
+                        aria-controls={`panel${i}a-content`}
+                        id={`panel${i}a-header`}
+                        className="accordionSummary"
+                    >
+                        <Typography className="accordionQuestion" align="left">
+                            <Typography variant="caption">Q{ i + 1 })</Typography> { item.question }
+                        </Typography>
+                    </AccordionSummary>
+                    <Divider />
+                    <AccordionDetails>
+                        { i % 2 === 0 ? 
+                            <Even correct={ item.correct_answer } incorrect={ item.incorrect_answers } /> 
+                                : <Odd correct={ item.correct_answer } incorrect={ item.incorrect_answers } /> 
+                        }
+                    </AccordionDetails>
+                </Accordion>
+            )) }
+        </div>
     )
 }
